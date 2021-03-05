@@ -23,7 +23,7 @@
                         <a href="{{ action('AuthorController@index',$articleType ) }}" class="btn btn-light">戻る</a>
                     </div>
                     <div class="mt-5">
-                        <h3 class="mb-3">編集</h3>
+                        <h4 class="mb-3">編集</h4>
                         <form action="{{ action('AuthorController@update',[$articleType,$author] ) }}" method="POST">
                             @method('PATCH')
                             @include('author._form');

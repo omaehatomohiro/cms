@@ -1,9 +1,4 @@
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">記事タイプ</label>
-  </div>
-</div>
 
 
 <div class="form-group">

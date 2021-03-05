@@ -21,7 +21,7 @@
                         <a href="{{ action('AuthorController@index',$articleType ) }}" class="btn btn-light">戻る</a>
                     </div>
                     <div class="mt-5">
-                        <h3 class="mb-3">新規追加</h3>
+                        <h4 class="mb-3">新規追加</h4>
                         <form action="{{ action('AuthorController@store',$articleType) }}" method="POST">
                             @csrf
                             @include('author._form')

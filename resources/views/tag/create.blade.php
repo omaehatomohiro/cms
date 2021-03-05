@@ -15,15 +15,19 @@
         @include('layouts.menu')
         <div class="col-12">
             <div class="card">
-                <div class="card-header">タグ追加</div>
+    
 
                 <div class="card-body">
-
-                    <form action="{{ action('TagController@store', $articleType) }}" method="POST">
-                        @csrf
-                        @include('tag._form')
-                    </form>
-
+                    <div>
+                        <a href="{{ action('PostController@index',$articleType ) }}" class="btn btn-light">戻る</a>
+                    </div>
+                    <div class="mt-5">
+                        <h4 class="mb-3">新規追加</h4>
+                        <form action="{{ action('TagController@store', $articleType) }}" method="POST">
+                            @csrf
+                            @include('tag._form')
+                        </form>
+                    </div>
                 </div>
             </div>
 

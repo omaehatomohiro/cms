@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">「 {{ $articleType->name }} 」カテゴリー 一覧</div>
+                <div class="card-header">カテゴリー</div>
 
                 <div class="card-body">
                     <div>

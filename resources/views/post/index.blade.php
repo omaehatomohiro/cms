@@ -5,12 +5,12 @@
 
 <!-- 見出し -->
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h3 class="mt-3 ml-3">{{$articleType->name}} Dashboard</h3>
 @stop
 
 
 @section('content')
-<div class="container">
+<div class="container-flued">
 
 <div class="col-12">
 

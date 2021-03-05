@@ -5,7 +5,7 @@
 
 <!-- 見出し -->
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h3 class="mt-3 ml-3">{{$articleType->name}} Dashboard</h3>
 @stop
 
 
@@ -22,7 +22,7 @@
                         <a href="{{ action('CategoryController@index',$articleType ) }}" class="btn btn-light">戻る</a>
                     </div>
                     <div class="mt-5">
-                        <h3 class="mb-3">新規追加</h3>
+                        <h4 class="mb-3">新規追加</h4>
                         <form action="{{ action('CategoryController@store',$articleType) }}" method="POST">
                             @csrf
                             @include('category._form')

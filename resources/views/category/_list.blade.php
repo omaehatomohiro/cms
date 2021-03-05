@@ -1,5 +1,5 @@
 <div class="mt-5">
-    <h2>登録済み</h2>
+    <h4 class="mb-3">登録済み</h4>
     <table class="table table-striped">
         <thead>
             <tr>

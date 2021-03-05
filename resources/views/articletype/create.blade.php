@@ -5,7 +5,7 @@
 
 <!-- 見出し -->
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h3 class="mt-3 ml-3">Dashboard</h3>
 @stop
 
 
@@ -14,10 +14,10 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         @include('layouts.menu')
-        <div class="col-md-9 col-lg-10">
+        <div class="col-12">
             <div class="card">
 
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">記事タイプ 追加</div>
 
                 <div class="card-body">
 

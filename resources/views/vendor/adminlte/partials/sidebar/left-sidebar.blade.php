@@ -28,6 +28,12 @@
                                 <p>{{$articleType->name}}</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ action('ArticleTypeController@create') }}">
+                                <i class="{{ $item['icon'] ?? 'far fa-fw fa-circle' }} {{isset($item['icon_color']) ? 'text-'.$item['icon_color'] : ''}}"></i>
+                                <p>記事タイプ追加</p>
+                            </a>
+                        </li>
                         @empty
                         <li class="nav-item">
                             <a class="nav-link">

@@ -5,19 +5,16 @@
 
 <!-- 見出し -->
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h3 class="mt-3 ml-3">Dashboard</h3>
 @stop
 
 @section('content')
-<div class="container">
-    <div class="text-left pt-4 pb-5">
-        <a class="btn btn-primary" href="{{ action('ArticleTypeController@create') }}">記事タイプ追加</a>
-    </div>
+<div class="container-fluid">
     <div class="row">
         @forelse($articleTypes as $articleType )
-        <div class="col-md">
+        <div class="col-12">
             <div class="card">
-                <div class="card-header">No.{{$articleType->id}}  「{{$articleType->name}}」</div>
+                <div class="card-header">記事タイプ 一覧</div>
                 <div class="card-body">
                     <h2>{{$articleType->name}}</h2>
                     <p>{{$articleType->slug}}</p>

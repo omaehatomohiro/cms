@@ -13,7 +13,7 @@
 <div class="container-fuild">
     <div class="row justify-content-center">
         @include('layouts.menu')
-        <div class="col-md-12 col-lg-10">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 

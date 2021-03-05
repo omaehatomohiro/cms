@@ -12,7 +12,7 @@
 @section('content')
 <div class="container-fuild">
     <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-10">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">投稿者 追加</div>
 

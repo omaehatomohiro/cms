@@ -25,27 +25,54 @@
 </div>
 
 
-<div class="input-group mb-3">
+<div class="input-group mt-4 mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="">作者</label>
+    </div>
+
+    @if( isset($authors[0]) )
+    <select name="author_id" class="custom-select custom-select-lg">
+    {!! author_options($authors,$post ?? null) !!}
+    </select>
+    @else
+        <!-- <p>カテゴリー登録なし</p> -->
+        <a class="btn btn-primary" href="{{ action('AuthorController@create', $articleType) }}">投稿者 新規追加</a>
+    @endif
+</div>
+
+
+
+<div class="form-group">
+    <label for="post_title">タイトル</label>
+    <input type="text" name="post_title" 
+        value="{{ old('post_title',isset($post) ? $post->post_title : '') }}" 
+        class="form-control" id="post_title" placeholder="">
+    <small class="form-text text-danger">{{$errors->first('post_title')}}</small>
+</div>
+
+
+<div class="input-group mb-1 mt-4">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
   </div>
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="post_thumbnail" aria-describedby="inputGroupFileAddon01" name="post_thumbnail">
+    <input type="file" class="custom-file-input" id="post_thumbnail"
+           aria-describedby="inputGroupFileAddon01" name="post_thumbnail"
+           value="{{ old('post_thumbnail', isset($post) ? $post->post_thumbnail : null) }}"
+    >
     <label class="custom-file-label" for="post_thumbnail">Choose file</label>
   </div>
 </div>
+<small class="form-text text-danger">{{$errors->first('post_thumbnail')}}</small>
 
-<div class="form-group">
-    <label for="author_id">作者</label>
-    <input type="text" name="author_id" 
-        class="form-control"
-        id="author_id"
-        value="{{ old('author_id',isset($post) ? $post->author_id : '') }}"
-        placeholder="">
+<div id="post_thumb_image" style="max-width:500px;">
+    @if(isset($post->post_thumbnail))
+    <img src="{{ asset('storage/thumbnails/'.$post->post_thumbnail )}}" class="img-thumbnailimg-fluid img-fluid">
+    @endif
 </div>
 
 
-<div class="form-group">
+<div class="form-group mt-4">
     <label for="post_slug">スラッグ</label>
     <input type="text" name="post_slug" 
         class="form-control"
@@ -77,20 +104,17 @@
 </div>
 
 
-<div class="form-group">
-    <label for="post_title">タイトル</label>
-    <input type="text" name="post_title" 
-        value="{{ old('post_title',isset($post) ? $post->post_title : '') }}" 
-        class="form-control" id="post_title" placeholder="">
-    <small class="form-text text-danger">{{$errors->first('post_title')}}</small>
-</div>
-
 
 <div class="form-group">
     <label for="post_text">本文</label>
     <input type="hidden" name="post_content">
+
     <div id="editor">
+        @if(isset($post))
+        {!! html_entity_decode($post->post_content,ENT_HTML5, 'UTF-8') !!}
+        @else
         {!! old('post_content',isset($post) ?? '') !!}
+        @endif
     </div>
 </div>
 <small class="form-text text-danger">{{$errors->first('post_content')}}</small>

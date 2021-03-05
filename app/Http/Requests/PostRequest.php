@@ -28,7 +28,7 @@ class PostRequest extends FormRequest
             //'article_type_id' => 'required',
             // 'category_id' => 'numeric',
             'post_status' => 'required|numeric',
-            // 'post_thumbnail' => 'required',
+            'post_thumbnail' => 'required',
             'post_slug' => [
                 'required',
                 Rule::unique('posts')->ignore($this->post)

@@ -11,6 +11,7 @@
         "php": "^7.2.5|^8.0",
         "ckeditor/ckeditor": "^4.15",
         "fideloper/proxy": "^4.4",
+        "jeroennoten/laravel-adminlte": "^3.5",
         "jxlwqq/quill": "^1.0",
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5"

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\ArticleType;
 use App\Post;
 use App\Category;
+use App\Author;
 use App\Tag;
 use App\Http\Requests\PostRequest;
 
@@ -25,26 +26,31 @@ class PostController extends Controller
 
     public function create(ArticleType $articleType){
         $categories = Category::where('article_type_id',$articleType->id)->get();
-        $tags = Tag::where('article_type_id',$articleType->id)->get();
-        return view('post.create',compact('articleType','categories','tags'));
+        $authors    = Author::where('article_type_id',$articleType->id)->get();
+        $tags       = Tag::where('article_type_id',$articleType->id)->get();
+        return view('post.create',compact('articleType','categories','authors','tags'));
     }
 
     public function store(ArticleType $articleType, PostRequest $request){
 
-        dd($request->post_thumbnail);
-
         DB::beginTransaction();
         try{
             $post = new Post;
-            $post->author_id = $request->id ?? null;
+            $post->author_id = $request->author_id ?? null;
             $post->article_type_id = $articleType->id;
             $post->category_id = $request->category_id ?? null;
             $post->post_status = $request->post_status;
-            $post->post_thumbnail = $request->post_thumbnail;
             $post->post_slug = $request->post_slug;
             $post->post_title = $request->post_title;
             $post->post_description = $request->post_description;
             $post->post_content = str_replace( '&', '&amp;',$request->post_content);
+
+            
+            $image_data = $request->file("post_thumbnail");
+            $filename = $image_data->getClientOriginalName();
+            $post->post_thumbnail = $filename;
+            $image_data->storeAs('public/thumbnails',$filename);
+
             $post->save();
 
             // 空でなければ
@@ -65,8 +71,9 @@ class PostController extends Controller
 
     public function edit(ArticleType $articleType, Post $post){
         $categories = Category::where('article_type_id',$articleType->id)->get();
+        $authors    = Author::where('article_type_id',$articleType->id)->get();
         $tags = Tag::where('article_type_id',$articleType->id)->get();
-        return view('post.edit',compact('articleType','categories','tags','post'));
+        return view('post.edit',compact('articleType','categories','authors','tags','post'));
     }
 
     public function update(ArticleType $articleType,Post $post, PostRequest $request){
@@ -74,15 +81,22 @@ class PostController extends Controller
         DB::beginTransaction();
         try{
 
-            $post->author_id = $request->id ?? null;
+            $post->author_id = $request->author_id ?? null;
             $post->article_type_id = $articleType->id;
             $post->category_id = $request->category_id ?? null;
             $post->post_status = $request->post_status;
-            $post->post_thumbnail = $request->post_thumbnail;
             $post->post_slug = $request->post_slug;
             $post->post_title = $request->post_title;
             $post->post_description = $request->post_description;
             $post->post_content = str_replace( '&', '&amp;',$request->post_content);
+
+            if(!is_null($request->file("post_thumbnail"))){
+                $image_data = $request->file("post_thumbnail");
+                $filename = $image_data->getClientOriginalName();
+                $post->post_thumbnail = $filename;
+                $image_data->storeAs('public/thumbnails',$filename);
+            }
+
             $post->save();
 
             // 空でなければ 中間テーブルの更新

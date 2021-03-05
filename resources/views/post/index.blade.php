@@ -1,4 +1,13 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+ 
+<!-- タイトル -->
+@section('title', 'Dashboard')
+
+<!-- 見出し -->
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
+
 
 @section('content')
 <div class="container">
@@ -13,13 +22,6 @@
                 <div class="card-body">
                     <div class="mt-3 mb-5">
                         <a class="btn btn-primary" href="{{ action('PostController@create',$articleType)}}">新規 {{$articleType->name}} 記事投稿</a>
-                        <a class="btn btn-primary" href="{{ action('CategoryController@create',$articleType)}}">新規カテゴリー追加</a>
-                        <a class="btn btn-primary" href="{{ action('TagController@create',$articleType)}}">新規タグ追加</a>
-                    </div>
-
-                    <div class="mt-3 mb-5">
-                        <a class="btn btn-primary" href="{{ action('CategoryController@index',$articleType)}}">カテゴリ一覧</a>
-                        <a class="btn btn-primary" href="{{ action('TagController@index',$articleType)}}">タグ一覧</a>
                     </div>
 
 

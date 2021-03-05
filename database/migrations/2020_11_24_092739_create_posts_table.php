@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('post_status');
             $table->string('post_description');
             $table->string('post_thumbnail')->nullable();
-            $table->string('post_content');
+            $table->text('post_content');
             $table->string('post_slug');
             $table->integer('article_type_id');
             $table->integer('category_id')->nullable();

@@ -11,16 +11,21 @@
 |
 */
 
-Route::get('/', 'ArticleTypeController@index')->name('home');
+//Route::get('/', 'ArticleTypeController@index')->name('home');
 
-Route::group(['prefix' => 'articletype'], function(){
+Route::get('/', function () {
+    return view('home'); //←追加
+});
+
+Route::group(['middleware' => ['auth'],'prefix' => 'articletype'], function(){
 
     // article type
-    Route::get('/create','ArticleTypeController@create');
-    Route::post('/store','ArticleTypeController@store');
-    Route::get('/{articleType}/edit','ArticleTypeController@edit');
-    Route::patch('/{articleType}/update','ArticleTypeController@update');
-    Route::delete('/{articleType}/delte','ArticleTypeController@delete');
+    Route::get('/', 'ArticleTypeController@index')->name('articletype.index');
+    Route::get('/create','ArticleTypeController@create')->name('articletype.create');
+    Route::post('/store','ArticleTypeController@store')->name('articletype.store');
+    Route::get('/{articleType}/edit','ArticleTypeController@edit')->name('articletype.edit');
+    Route::patch('/{articleType}/update','ArticleTypeController@update')->name('articletype.update');
+    Route::delete('/{articleType}/delte','ArticleTypeController@delete')->name('articletype.delete');
 
 
     // post
@@ -52,52 +57,14 @@ Route::group(['prefix' => 'articletype'], function(){
     Route::patch('/{articleType}/category/{category}/update','CategoryController@update');
     Route::delete('/{articleType}/category/delete/{category}','CategoryController@delete');
 
+    // author
+    Route::get('/{articleType}/authors','AuthorController@index');
+    Route::get('/{articleType}/author/{author}','AuthorController@show')->where('author', '[0-9]+');
+    Route::get('/{articleType}/author/create','AuthorController@create');
+    Route::get('/{articleType}/author/{author}/edit','AuthorController@edit');
+    Route::post('/{articleType}/author/store','AuthorController@store');
+    Route::patch('/{articleType}/author/{author}/update','AuthorController@update');
+    Route::delete('/{articleType}/author/delete/{author}','AuthorController@delete');
 });
 
-
-// Route::group(['prefix' => 'post'], function(){
-//     // Route::get('/{articleType}','PostController@index');
-//     Route::post('/{articleType}/store','PostController@store');
-//     Route::get('/{articleType}','PostController@index');
-//     Route::get('/{articleType}/create/{post}','PostController@show');
-//     Route::get('/{articleType}/create','PostController@create');
-// });
-
-
-// Route::group(['prefix' => 'category'], function(){
-    // Route::get('/create','CategoryController@create');
-    // Route::get('/{category}','CategoryController@edit');
-    // Route::post('/store','CategoryController@store');
-    // Route::patch('/update/{category}','CategoryController@update');
-    // Route::delete('/delete/{category}','CategoryController@delete');
-// });
-
-// Route::group(['prefix' => 'tag'], function(){
-//     // Route::get('/create','TagController@create');
-//     // Route::get('/show/{tag}','TagController@show');
-//     // Route::post('/store','TagController@store');
-//     // Route::patch('/update/{category}','CategoryController@update');
-//     // Route::delete('/delete/{category}','CategoryController@delete');
-// });
-
-
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes();
-
-// Route::group(['prefix' => 'article'], function(){
-
-//     // Route::get('/',function(){
-
-//     // });
-
-//     // Route::get('/{id}',function(){
-
-//     // });
-
-//     Route::get('/create','ArticleTypeController@create');
-//     Route::post('/store','ArticleTypeController@store');
-    
-
-// });

@@ -117,3 +117,26 @@ document.getElementById('save-post').addEventListener('click', function() {
     form.submit();
     return false;
 });
+
+
+document.getElementById('post_thumbnail').addEventListener('change',function(e){
+
+    document.getElementById('post_thumb_image').src=e.value;
+    var reader = new FileReader();
+    reader.onload = function(e){
+        create_thumbnail(e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+
+
+function create_thumbnail(data){
+    var img = document.createElement('img');
+    img.className = "img-thumbnailimg-fluid img-fluid";
+    img.src = data;
+    var thumb_div = document.getElementById('post_thumb_image');
+    if(thumb_div.childElementCount > 0){
+        thumb_div.removeChild(thumb_div.firstElementChild);
+    }
+    thumb_div.appendChild(img);   
+}

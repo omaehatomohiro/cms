@@ -1,4 +1,13 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+ 
+<!-- タイトル -->
+@section('title', 'Dashboard')
+
+<!-- 見出し -->
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
+
 
 @section('content')
 <div class="container">

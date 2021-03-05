@@ -29,6 +29,27 @@ function status_options($num){
 }
 
 
+
+function author_options($authors,$post){
+  $opstions_html = "<option value=''>選択なし</option>";
+
+  if( !is_null($post)){
+    $selected_id = $post->author_id;
+  }else{
+    $selected_id = '';
+  }
+  foreach($authors as $author){
+    if($author->id == $selected_id){
+      $opstions_html .= '<option value="' . $author->id . '" selected>' . $author->name .'</option>';
+    }else{
+      $opstions_html .= '<option value="' . $author->id . '">' . $author->name .'</option>';
+    }
+  }
+  return $opstions_html;
+}
+
+
+
 function tag_checks($tags, $post){
   
   $tagCheckboxs = '';

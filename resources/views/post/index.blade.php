@@ -10,7 +10,7 @@
 
 
 @section('content')
-<div class="container-flued">
+<div class="container-fluid">
 
 <div class="col-12">
 
@@ -18,7 +18,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">「 {{$articleType->name}} 」記事一覧</div>
+                <div class="card-header">投稿一覧</div>
                 <div class="card-body">
                     <div class="mt-3 mb-5">
                         <a class="btn btn-primary" href="{{ action('PostController@create',$articleType)}}">新規 {{$articleType->name}} 記事投稿</a>

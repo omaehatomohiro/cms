@@ -16,7 +16,7 @@
         @include('layouts.menu')
         <div class="col-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">投稿者 編集</div>
 
                 <div class="card-body">
                     <div>

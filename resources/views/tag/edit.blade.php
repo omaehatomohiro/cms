@@ -15,12 +15,12 @@
         @include('layouts.menu')
         <div class="col-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">タグ 編集</div>
 
                 <div class="card-body">
 
                     <div class="mt-5">
-                        <h2>登録済み</h2>
+                        <h4 class="mb-3">登録済み</h4>
                         <form action="{{ action('TagController@update', [$articleType,$tag]) }}" method="POST">
                             @csrf
                             @method('PATCH')

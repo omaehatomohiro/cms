@@ -15,7 +15,7 @@
         @include('layouts.menu')
         <div class="col-12">
             <div class="card">
-    
+                <div class="card-header">タグ 追加</div>
 
                 <div class="card-body">
                     <div>

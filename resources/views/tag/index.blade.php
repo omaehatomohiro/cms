@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">「 {{ $articleType->name }} 」タグ 一覧</div>
+                <div class="card-header">タグ 一覧</div>
 
                 <div class="card-body">
                     <div>

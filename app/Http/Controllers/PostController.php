@@ -49,7 +49,12 @@ class PostController extends Controller
             $image_data = $request->file("post_thumbnail");
             $filename = $image_data->getClientOriginalName();
             $post->post_thumbnail = $filename;
-            $image_data->storeAs('public/thumbnails',$filename);
+
+            if ( app()->isLocal() || app()->runningUnitTests() ) {
+                $image_data->storeAs('public/thumbnails',$filename);
+            }else{
+                $image_data->storeAs('thumbnails',$filename,'s3');
+            }
 
             $post->save();
 
@@ -94,7 +99,11 @@ class PostController extends Controller
                 $image_data = $request->file("post_thumbnail");
                 $filename = $image_data->getClientOriginalName();
                 $post->post_thumbnail = $filename;
-                $image_data->storeAs('public/thumbnails',$filename);
+                if ( app()->isLocal() || app()->runningUnitTests() ) {
+                    $image_data->storeAs('public/thumbnails',$filename);
+                }else{
+                    $image_data->storeAs('thumbnails',$filename,'s3');
+                }
             }
 
             $post->save();

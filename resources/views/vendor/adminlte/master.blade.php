@@ -69,12 +69,12 @@
         <link rel="manifest" href="{{ asset('favicons/manifest.json') }}">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
+        
     @endif
-
+    
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
-
     {{-- Body Content --}}
     @yield('body')
 
@@ -103,7 +103,8 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
+    <script src="/js/ckeditor.js"></script>
+    <script src="/js/functions.js"></script>
 </body>
 
 </html>

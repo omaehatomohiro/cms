@@ -14,7 +14,10 @@
         "jeroennoten/laravel-adminlte": "^3.5",
         "jxlwqq/quill": "^1.0",
         "laravel/framework": "^6.20",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "league/flysystem-cached-adapter": "~1.0",
+        "league/flysystem-sftp": "~1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",

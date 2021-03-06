@@ -6,6 +6,10 @@ npm run dev
 
 
 
+#### 下記が必要
+
+- php-mbstring
+- php-dom
 
 
 config/filesystems.php

@@ -11,7 +11,16 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">You are logged in!</p>
+                    @if (Auth::check())
+                        <p class="mb-0">You are logged in!</p>
+                    @else
+                    <p>ニュース</p>
+                    <div class="">
+                        <a class="btn btn-primary" href="http://127.0.0.1:8000/articletype/1/posts">
+                            「ニュース 」記事一覧へ
+                        </a>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

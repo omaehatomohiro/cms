@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ArticleType;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -12,10 +14,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -24,7 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articleTypes = ArticleType::all();
-        return view('home')->with('articleTypes',$articleTypes);
+
+        if (Auth::check()){
+
+            return redirect()->route('articletype.index');
+        }else{
+            return view('home');
+        }
     }
 }

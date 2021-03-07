@@ -45,7 +45,7 @@
                     @else
                         <li class="nav-header" style="padding: 1.7rem 1rem .5rem;">投稿</li>
                        
-
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="/articletype/{{$articleType->id}}/posts">
                                 <i class="{{ $item['icon'] ?? 'far fa-fw fa-circle' }} {{isset($item['icon_color']) ? 'text-'.$item['icon_color'] : ''}}"></i>
@@ -107,11 +107,31 @@
                         </li>
 
                     @endif
+                    <li class="nav-header" style="padding: 1.7rem 1rem .5rem;">アカウント</li>
+                    <li class="nav-item">
+                        <form class="nav-link" action="/logout" method="post">
+                        @csrf
+                        <!-- <a class="nav-link" href="/login"> -->
+                            <i class="far fa-fw fa-circle"></i>
+                            <button type="submit" class="btn text-white">ログアウト</p>
+                        <!-- </a> -->
+                        </form>
+                    </li>
                 @endif
-                <li class="nav-header ">アカウント設定</li>
+
+                @if (!Auth::check())
+                    <li class="nav-header" style="padding: 1.7rem 1rem .5rem;">アカウント</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">
+                            <i class="far fa-fw fa-circle"></i>
+                            <p>ログイン</p>
+                        </a>
+                    </li>
+                @endif
+                
                 {{-- Configured sidebar links --}}
                 {{--　@each('adminlte::partials.sidebar.menu-item', $adminlte->menu('sidebar'), 'item') --}}
-            
+
             </ul>
         </nav>
     </div>

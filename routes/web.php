@@ -13,9 +13,11 @@
 
 //Route::get('/', 'ArticleTypeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('home'); //←追加
-});
+// Route::get('/', function () {
+//     return view('home'); //←追加
+// });
+
+Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => ['auth'],'prefix' => 'articletype'], function(){
 

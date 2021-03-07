@@ -9,7 +9,7 @@ use App\ArticleType;
 class ArticleTypeController extends Controller
 {
 
-    public function index(){
+    public function index(Request $request){
         $articleTypes = ArticleType::all();
         return view('articletype.index',compact('articleTypes')); 
     }

@@ -100,9 +100,9 @@ class PostController extends Controller
                 $filename = $image_data->getClientOriginalName();
                 $post->post_thumbnail = $filename;
                 if ( app()->isLocal() || app()->runningUnitTests() ) {
-                    $image_data->storeAs('public/thumbnails',$filename);
+                    $image_data->storeAs('media/thumbnails',$filename);
                 }else{
-                    $image_data->storeAs('thumbnails',$filename,'s3');
+                    $image_data->storeAs('media/thumbnails',$filename,'s3');
                 }
             }
 
